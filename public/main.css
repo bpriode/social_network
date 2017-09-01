@@ -16,9 +16,10 @@
 .login_container{
   width: 33%;
   text-align: center;
-  color: darkcyan;
-  font-size: 40px;
-  text-shadow: 2px 2px lightgray;
+  color: white;
+  font-size: 30px;
+  margin-top: 30px;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .login_form{
@@ -38,9 +39,10 @@
 .signup_container{
   width: 33%;
   text-align: center;
-  color: darkcyan;
-  font-size: 40px;
-  text-shadow: 2px 2px lightgray;
+  color: white;
+  margin-top: 30px;
+  font-size: 30px;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .signup_form{
@@ -69,4 +71,9 @@
   font-size: 60px;
   border-bottom: 2px dashed gray;
   margin: 200px 30px 0px 30px;
+}
+
+.individual{
+  border: 1px solid gray;
+  width: 50%;
 }

@@ -1,6 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define('Post', {
+    userId: DataTypes.INTEGER,
     text: DataTypes.STRING,
     like: DataTypes.INTEGER
   }, {});
@@ -8,16 +9,16 @@ module.exports = function(sequelize, DataTypes) {
 
   Post.associate = function(models) {
     Post.belongsTo(models.User, {
-      foreignKey: 'postId',
+      as: 'user',
+      foreignKey: 'userId'
     })
 
-    Post.hasOne(models.User, {
-      foreignKey: 'postId',
-      otherKey: 'userId',
-      through: 'likes'
+    Post.hasMany(models.Like, {
+      as: "likes",
+      foreignKey: 'userId'
     })
   }
 
-  
+
   return Post;
 };

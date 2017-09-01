@@ -49,16 +49,16 @@ passport.use(new LocalStrategy(
         'username': username
       }
     }).then(function (user) {
+      console.log(user);
       if (user == null) {
         return done(null, false, { message: 'Incorrect credentials.' })
       }
 
       let hashedPassword = bcrypt.hashSync(password, user.salt)
 
-      if (user.password === hashedPassword) {
+      if (user.passwordhash === hashedPassword) {
         return done(null, user)
       }
-
       return done(null, false, { message: 'Incorrect credentials.' })
     })
   }

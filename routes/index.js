@@ -1,15 +1,13 @@
-const express = require("express");
-const User    = require("../models/index").User;
-const Post    = require("../models/index").Post;
-const Like    = require("../models/index").Like;
-const bcrypt  = require("bcrypt");
+const express  = require("express");
+const models     = require("../models/index")
+const bcrypt   = require("bcrypt");
 const passport = require('passport');
 
 const router  = express.Router();
 
 
 const isAuthenticated = function (req, res, next) {
-  console.log(req.isAuthenticated());
+req.isAuthenticated();
     if (req.isAuthenticated()) {
       return next()
     }
@@ -34,6 +32,7 @@ router.get("/signup", function(req, res) {
 });
 
 router.post("/signup", function(req, res) {
+  let displayname = req.body.displayname
   let username = req.body.username
   let password = req.body.password
 
@@ -46,12 +45,13 @@ router.post("/signup", function(req, res) {
   let hashedPassword = bcrypt.hashSync(password, salt)
 
   let newUser = {
+    displayname: displayname,
     username: username,
     salt: salt,
-    password: hashedPassword
+    passwordhash: hashedPassword
   }
 
-  User.create(newUser).then(function() {
+  models.User.create(newUser).then(function() {
     res.redirect('/')
   }).catch(function(error) {
     req.flash('error', "Please, choose a different username.")
@@ -60,7 +60,35 @@ router.post("/signup", function(req, res) {
 });
 
 router.get("/user", isAuthenticated, function(req, res) {
-  res.render("user", {username: ''});
+  models.Post.findAll({
+
+
+  }).then(function(data){
+    res.render('user', {post: data})
+  })
+  // res.render("user", {username: ''});
+});
+
+
+router.post('/user', isAuthenticated, function (req, res, next) {
+  models.Post.create({
+    text: req.body.text,
+    userId: req.user.id,
+  })
+  .then(function(data) {
+    res.redirect('/user');
+  })
+});
+
+router.get('/destroy/:id', isAuthenticated, function(req, res, next) {
+  models.Post.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(function(data) {
+    res.redirect('/user');
+  });
 });
 
 router.get("/logout", function(req, res) {

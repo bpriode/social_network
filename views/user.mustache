@@ -1,0 +1,29 @@
+<nav>
+  <a href="/logout">Logout</a>
+</nav>
+
+{{#user}}
+<h1>Hello, {{displayname}}</h1>
+
+
+<form class="" action="/user" method="post">
+  <textarea name="text" rows="8" cols="80" placeholder="Tell us about your Adventures..."></textarea>
+  <input type="submit" name="submit" value="Post">
+</form>
+
+
+<div class="newPost">
+  {{#post}}
+    <div class="individual">
+        <p>{{user.dataValues.username}}</p>
+        <p>{{text}}</p>
+
+        
+        <a href="/destroy/{{id}}">Delete Post</a>
+
+    </div>
+  {{/post}}
+</div>
+
+
+{{/user}}
