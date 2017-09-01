@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "bethanypriode",
+    "password": null,
+    "database": "socialNetwork",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "bethanypriode",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "postgre"
+  },
+  "production": {
+    "username": "bethanypriode",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

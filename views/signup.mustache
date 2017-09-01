@@ -1,0 +1,36 @@
+
+<div class="form_container">
+  <div class="login_container">
+    <h2>Log In</h2>
+    <form class="login_form" action="/" method="post">
+      <br>
+      <input type="text" name="username" placeholder="Username" autofocus>
+      <br>
+      <input type="password" name="password" placeholder="Password">
+      <br>
+      <button type="submit" name="button">Login</button>
+    </form>
+    {{#message}}
+      {{.}}
+    {{/message}}
+  </div>
+
+  <div class="headline">
+    <h1>wander</h1>
+    <h2>Join us to share where you have been wandering and where you are headed to next.</h2>
+  </div>
+  <div class="signup_container">
+    <h2>Create Account</h2>
+    <form class="signup_form" action="/signup" method="post">
+      <input type="text" name="displayname" placeholder="Display Name">
+      <br>
+      <input type="text" name="username" placeholder="Username">
+      <br>
+      <input type="password" name="password" placeholder="Password">
+      <br>
+      <input type="password" name="confirmPass" placeholder="Confirm Password">
+      <br>
+      <button type="submit" name="button">Submit</button>
+    </form>
+  </div>
+</div>
