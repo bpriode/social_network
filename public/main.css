@@ -73,7 +73,67 @@
   margin: 200px 30px 0px 30px;
 }
 
+nav{
+  background-color: darkcyan;
+  height: 50px;
+}
+nav a{
+  text-decoration: none;
+  color: white;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.user_container{
+  background-color: darkcyan;
+}
+
+.user_container h1{
+  margin-left: 20px;
+  color: lightcyan;
+}
+
+h5{
+  color: white;
+  margin-left: 30px;
+  font-size: 16px;
+}
+
+
+.post_form{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post_form textarea{
+  font-size: 20px;
+  width: 50%;
+  border: 10px dashed gray;
+  align-self: center;
+}
+
+.post_form input{
+  width: 100px;
+  height: 70px;
+  background-color: lightcyan;
+  margin-top: 15px;
+  align-self: center;
+}
+
 .individual{
-  border: 1px solid gray;
+  border: 3px solid gray;
+  width: 50%;
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+}
+
+.individual a{
+  text-decoration: none;
+}
+
+.individual h4{
+  border-bottom: 1px dashed gray;
   width: 50%;
 }

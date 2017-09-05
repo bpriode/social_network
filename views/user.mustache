@@ -1,13 +1,15 @@
 <nav>
   <a href="/logout">Logout</a>
 </nav>
+<div class="user_container">
 
 {{#user}}
-<h1>Hello, {{displayname}}</h1>
+<h1>Hello, {{username}} -- @{{displayname}}</h1>
 
 
-<form class="" action="/user" method="post">
-  <textarea name="text" rows="8" cols="80" placeholder="Tell us about your Adventures..."></textarea>
+
+<form class="post_form" action="/user" method="post">
+  <textarea name="text" rows="8" cols="80" placeholder="Tell us about your Adventures in 140 characters or less..."></textarea>
   <input type="submit" name="submit" value="Post">
 </form>
 
@@ -15,11 +17,13 @@
 <div class="newPost">
   {{#post}}
     <div class="individual">
-        <p>{{user.dataValues.username}}</p>
+        <h4>@{{user.dataValues.displayname}}</h4>
         <p>{{text}}</p>
+        <p>{{createdAt}}</p>
 
-        
+
         <a href="/destroy/{{id}}">Delete Post</a>
+        <a href="/like/{{id}}"></a>
 
     </div>
   {{/post}}
@@ -27,3 +31,4 @@
 
 
 {{/user}}
+</div>
