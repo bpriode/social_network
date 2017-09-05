@@ -77,12 +77,13 @@ nav{
   background-color: darkcyan;
   height: 50px;
 }
-nav a{
+a{
   text-decoration: none;
   color: white;
   margin-left: 20px;
   font-size: 20px;
 }
+
 
 .user_container{
   background-color: darkcyan;
@@ -131,6 +132,11 @@ h5{
 
 .individual a{
   text-decoration: none;
+  font-size: 14px;
+}
+
+.individual a:visited{
+  color: black;
 }
 
 .individual h4{

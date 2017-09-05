@@ -62,11 +62,7 @@ router.post("/signup", function(req, res) {
 router.get("/user", isAuthenticated, function(req, res) {
   models.Post.findAll({
     order: [['createdAt', 'Desc']],
-    include: [
-      {
-        model: models.User, as: 'user'
-      }
-    ]
+    include: [{model: models.User, as: 'user'}]
 
 
   }).then(function(data){
@@ -86,7 +82,7 @@ router.post('/user', isAuthenticated, function (req, res, next) {
   })
 });
 
-router.get('/destroy/:id', isAuthenticated, function(req, res, next) {
+router.get('/destroy/:id', function(req, res, next) {
   models.Post.destroy({
     where: {
       id: req.params.id
