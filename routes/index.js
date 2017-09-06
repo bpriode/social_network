@@ -62,9 +62,12 @@ router.post("/signup", function(req, res) {
 router.get("/user", isAuthenticated, function(req, res) {
   models.Post.findAll({
     order: [['createdAt', 'Desc']],
-    include: [{model: models.User, as: 'user'}]
-
-  }).then(function(posts){
+    include: [
+      {model: models.User, as: 'user'},
+      {model: models.Like, as: 'likes'}
+    ]
+  })
+  .then(function(posts){
     posts.forEach(function(post){
       if (post.userId === req.user.id) {
         post.canDelete = true

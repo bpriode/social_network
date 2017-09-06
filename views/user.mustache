@@ -1,10 +1,15 @@
-<nav>
-  <a href="/logout">Logout</a>
-</nav>
+{{#user}}
+<header>
+  <nav>
+    <a href="/logout">Logout</a>
+  </nav>
+  <h1>Hello, {{username}} -- @{{displayname}}</h1>
+</header>
+
+
 <div class="user_container">
 
-{{#user}}
-<h1>Hello, {{username}} -- @{{displayname}}</h1>
+
 
 
 
