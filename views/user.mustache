@@ -22,8 +22,10 @@
         <p>{{createdAt}}</p>
 
 
-
+        {{#canDelete}}
         <a href="/destroy/{{id}}">Delete Post</a>
+        {{/canDelete}}
+
 
     </div>
   {{/post}}

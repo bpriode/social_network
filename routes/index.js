@@ -64,10 +64,13 @@ router.get("/user", isAuthenticated, function(req, res) {
     order: [['createdAt', 'Desc']],
     include: [{model: models.User, as: 'user'}]
 
-
-  }).then(function(data){
-
-    res.render('user', {post: data})
+  }).then(function(posts){
+    posts.forEach(function(post){
+      if (post.userId === req.user.id) {
+        post.canDelete = true
+    }
+  })
+    res.render('user', {post: posts})
   })
 });
 
@@ -82,16 +85,20 @@ router.post('/user', isAuthenticated, function (req, res, next) {
   })
 });
 
-router.get('/destroy/:id', function(req, res, next) {
-  models.Post.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
+router.get('/destroy/:id', isAuthenticated, function(req, res, next) {
+    models.Post.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
   .then(function(data) {
     res.redirect('/user');
-  });
-});
+  })
+  .catch(function(err){
+    res.send(err)
+  })
+})
+
 
 router.get("/logout", function(req, res) {
   req.logout();
