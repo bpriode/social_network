@@ -28,9 +28,12 @@
 
 
         {{#canDelete}}
+        <a href="/like/{{id}}">Like</a>
         <a href="/destroy/{{id}}">Delete Post</a>
         {{/canDelete}}
-
+        {{^canDelete}}
+        <a href="/like/{{id}}">Like</a>
+        {{/canDelete}}
 
     </div>
   {{/post}}

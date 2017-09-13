@@ -88,7 +88,13 @@ router.post('/user', isAuthenticated, function (req, res, next) {
   })
 });
 
-router.get('/destroy/:id', isAuthenticated, function(req, res, next) {
+router.post('/like/:id', isAuthenticated, function(req, res) {
+  models.Like.create({
+    like:
+  })
+})
+
+router.delete('/destroy/:id', isAuthenticated, function(req, res, next) {
     models.Post.destroy({
       where: {
         id: req.params.id
