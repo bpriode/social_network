@@ -88,11 +88,20 @@ router.post('/user', isAuthenticated, function (req, res, next) {
   })
 });
 
-// router.post('/like/:id', isAuthenticated, function(req, res) {
-//   // models.Like.create({
-//   //
-//   // })
-// })
+
+router.post("/like/:id", function(req, res){
+    models.Like.create({
+        userId: req.user.id,
+        postId: req.params.id
+    })
+    .then(function(data){
+        res.redirect("/user");
+    })
+  })
+
+
+
+
 
 router.delete('/destroy/:id', isAuthenticated, function(req, res, next) {
     models.Post.destroy({

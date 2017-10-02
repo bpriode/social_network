@@ -28,11 +28,14 @@
 
 
         {{#canDelete}}
-        <a href="/like/{{id}}">Like</a>
+        <p>{{likes.length}}-Likes</p>
         <a href="/destroy/{{id}}">Delete Post</a>
         {{/canDelete}}
         {{^canDelete}}
-        <a href="/like/{{id}}">Like</a>
+        <p>{{likes.length}}-Likes</p>
+        <form action="/like/{{id}}" method="post">
+           <button type="submit">Like</button>
+       </form>
         {{/canDelete}}
 
     </div>
