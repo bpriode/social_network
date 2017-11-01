@@ -5,6 +5,8 @@ const passport = require('passport');
 
 const router  = express.Router();
 
+// This will require your knowledge of forms, validation, sessions, middleware, and Sequelize.
+
 
 const isAuthenticated = function (req, res, next) {
 req.isAuthenticated();
@@ -98,9 +100,6 @@ router.post("/like/:id", function(req, res){
         res.redirect("/user");
     })
   })
-
-
-
 
 
 router.delete('/destroy/:id', isAuthenticated, function(req, res, next) {
